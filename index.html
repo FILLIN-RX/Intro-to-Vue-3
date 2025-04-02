@@ -10,10 +10,44 @@
   </head>
   <body>
     <div id="app">
-      <h1>Product goes here</h1>
+      <div class="nav-bar">
+        <div class="card">Card({{cart}})</div>
+        <div class="product-display">
+          <div class="product-container">
+            <div class="product-image">
+              <!--image goes here-->
+              <img :src="image">
+              <a :href="url">yo</a>
+
+            </div>
+            <div class="product-info">
+              <h1>{{product}}</h1>
+             <!----> <p v-if="Inventory>10">In stock</p>
+              <p v-else-if="Inventory<=10&& Inventory>0">almost sold out</p>
+              <p v-else>Out of stock</p>
+              <p v-if="onSale">On sale</p>
+              <p v-else>not on sale</p>
+              <ul>
+                <li v-for="detail in details">{{detail}}</li>
+
+                <div v-for="variant in varients":key="variant.id" @mouseover="updateImage(variant.image)">{{variant.color}}</div>
+              </ul>
+              <p v-for="(detail ,index) in details" :key="index">{{detail}}</p>
+              <button class="button" @click="addToCart">add to card</button>
+              <button class="button" @click="removeToCart">remove to card</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      
     </div>
 
     <!-- Import Js -->
     <script src="./main.js"></script>
+    <!--Mount App-->
+    <script>
+      const mountedApp= app.mount('#app')
+    </script>
   </body>
 </html>
