@@ -12,39 +12,9 @@
     <div id="app">
       <div class="nav-bar">
         <div class="card">Card({{cart}})</div>
-        <div class="product-display">
-          <div class="product-container">
-            <div class="product-image">
-              <!--image goes here-->
-              <img :class="{ 'out-of-stock-img': !Instock }" :src="image">
-              <a :href="url">yo</a>
-
-            </div>
-            <div class="product-info">
-              <h1>{{title}}</h1>
-              <p v-if="Instock">In stock</p>
-              <p v-else>Out of stock</p>
-              <p v-if="toSell">On sale</p>
-              <p v-else>not on sale</p>
-              <p>{{sale}}</p>
-              <ul>
-                <li v-for="detail in details">{{detail}}</li>
-
-                <div
-                 v-for="(variant,index) in varients"
-                 :key="variant.id"
-                  @mouseover="updateVariant(index)"
-                   class="color-circle" 
-                   :style="{backgroundColor:variant.color}">
-                  </div>
-              </ul>
-              <p v-for="(detail ,index) in details" :key="index">{{detail}}</p>
-              <button :class="{disabledButton: !Instock}" class="button" @click="addToCart" :disabled="!Instock">add to card</button>
-              <button class="button" @click="removeToCart">remove to card</button>
-
-            </div>
-          </div>
-        </div>
+        <product-display :premium="premium"></product-display>
+        <product-display :premium="premium"></product-display>
+        
       </div>
       
     </div>
@@ -52,8 +22,12 @@
     <!-- Import Js -->
     <script src="./main.js"></script>
     <!--Mount App-->
+    <!--Import component-->
+    <script src="./components/productDisplay.js"></script>
+    <script src="./components/productDetails.js"></script>
     <script>
       const mountedApp= app.mount('#app')
     </script>
+
   </body>
 </html>
