@@ -34,7 +34,8 @@ app.component('product-display',{
             </div>
         </ul>
         
-        <button :class="{disabledButton: !Instock}" class="button" @click="addToCart" :disabled="!Instock">add to card</button>
+        <button :class="{disabledButton: !Instock}" class="button" @click="addToCart" :disabled="!Instock">add to cart</button>
+        <button :class="{disabledButton: !Instock}" class="button" @click="removeToCart" >Remove from cart</button>
 
       </div>
     </div>
@@ -63,13 +64,15 @@ app.component('product-display',{
 },
 methods:{
     addToCart(){
-        this.cart +=1
+        this.cart +=1,
+        this.$emit('add-to-cart',
+        this.varients[this.selectedVariant].id)
     },
     removeToCart(){
-        if (this.cart>=1) {
-            this.cart -=1
-            
-        }
+        
+            this.$emit('remove-to-cart',
+              this.varients[this.selectedVariant].id
+            )
         
 
     },

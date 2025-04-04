@@ -11,9 +11,9 @@
   <body>
     <div id="app">
       <div class="nav-bar">
-        <div class="card">Card({{cart}})</div>
-        <product-display :premium="premium"></product-display>
-        <product-display :premium="premium"></product-display>
+        <div class="card">Card({{cart.length}})</div>
+        <product-display :premium="premium" @add-to-cart="updateCart" @remove-to-cart="removeCart"></product-display>
+        <product-display :premium="premium"  @add-to-cart="updateCart" @remove-to-cart="removeCart"></product-display>
         
       </div>
       
