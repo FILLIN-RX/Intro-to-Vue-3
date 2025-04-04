@@ -1,3 +1,5 @@
+
+
 app.component('review-form',{
 
 
@@ -23,6 +25,8 @@ app.component('review-form',{
         
         
         </select>
+        <label for="recommandation">would you recommend this product</label>
+        <input id="recommandation" v-model="recommandation">
         <input class="button" type="submit" value="Submit">
     
     
@@ -31,21 +35,30 @@ app.component('review-form',{
         return {
             name:'',
             review:'',
-            rating:null
+            rating:null,
+            recommandation:''
         }
     },
     methods:{
-        onsubmit(){
+        onSubmit(){
+            if (this.name===''||this.review===''||this.rating=== null ||this.recommandation==='') {
+                alert("reviews must be full")
+                return
+                
+            }
             let productReview={
                 name:this.name,
                 review:this.review,
-                rating:this.rating
-            }
+                rating:this.rating,
+                recommandation:this.recommandation
+            };
+            console.log("form submitted",productReview),
             this.$emit('review-submitted',productReview)
 
             this.name='',
             this.review='',
-            this.rating=''
+            this.rating=null,
+            this.recommandation=''
         }
 
     }
