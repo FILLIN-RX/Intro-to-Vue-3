@@ -14,6 +14,7 @@
         <div class="card">Card({{cart.length}})</div>
         <product-display :premium="premium" @add-to-cart="updateCart" @remove-to-cart="removeCart"></product-display>
         <product-display :premium="premium"  @add-to-cart="updateCart" @remove-to-cart="removeCart"></product-display>
+        <review-form></review-form>
         
       </div>
       
@@ -25,6 +26,7 @@
     <!--Import component-->
     <script src="./components/productDisplay.js"></script>
     <script src="./components/productDetails.js"></script>
+    <script src="./components/addReview.js"></script>
     <script>
       const mountedApp= app.mount('#app')
     </script>
